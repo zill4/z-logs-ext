@@ -1,0 +1,74 @@
+{
+  "name": "z-logs",
+  "displayName": "z-logs",
+  "description": "Log viewer for memory-mapped logs created by z-mmap-logger",
+  "version": "0.0.1",
+  "publisher": "zill4",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization",
+    "Debuggers"
+  ],
+  "keywords": [
+    "logs",
+    "mmap",
+    "memory-mapped",
+    "z-logs",
+    "nodejs"
+  ],
+  "icon": "resources/z-logs-icon.png",
+  "galleryBanner": {
+    "color": "#C80000",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zill4/z-logs-ext"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "z-logs.showLogs",
+        "title": "Show Z-Logs"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "explorerResourceIsFolder",
+          "command": "z-logs.showLogs",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/mocha": "^9.1.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.60.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.3",
+    "eslint": "^8.39.0",
+    "typescript": "^5.0.4",
+    "vsce": "^2.15.0"
+  }
+}
